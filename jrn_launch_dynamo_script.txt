@@ -1,0 +1,54 @@
+' Build: 20190327_2315(x64)
+' Branch: RELEASE_2020-RTM
+Dim Jrn
+Set Jrn = CrsJournalScript
+Jrn.Directive "CategoryDisciplineFilter"  _
+        , -1
+Jrn.Directive "DisciplineOption"  _
+        , 32253
+Jrn.Directive "TabDisplayOptions"  _
+        , "StayOnModifyInProject", 0
+Jrn.Directive "TabDisplayOptions"  _
+        , "StayOnModifyInFamily", 1
+Jrn.Directive "TabDisplayOptions"  _
+        , "ActiveCtOnSelection", 1
+Jrn.Data "JournalDefaultTemplate"  _
+        , "Шаблон строительства=$AllUsersAppData\Templates\Russia\Construction-DefaultRUSRUS.rte, Архитектурный шаблон=$AllUsersAppData\Templates\Russia\DefaultRUSRUS.rte, Шаблон несущей конструкции=$AllUsersAppData\Templates\Russia\Structural Analysis-DefaultRUSRUS.rte, Шаблон механического оборудования=$AllUsersAppData\Templates\Russia\Mechanical-DefaultRUSRUS.rte"
+Jrn.Data "JournalDefaultViewDiscipline"  _
+        , "Coordination"
+Jrn.Directive "Version"  _
+        , "2020.000", "2.164"
+Jrn.Directive "Username"  _
+        , "ASUS"
+Jrn.Directive "AllowLinkSelection"  _
+        , 1
+Jrn.Directive "AllowFaceSelection"  _
+        , 0
+Jrn.Directive "AllowUnderlaySelection"  _
+        , 0
+Jrn.Directive "AllowPinnedSelection"  _
+        , 1
+Jrn.Directive "ThinLinesEnabled"  _
+        , 0
+ Jrn.RibbonEvent "TabActivated:Архитектура"
+Jrn.Directive "IdleTimeTaskSymbol"  _
+        , "0.ExternalEvent"
+Jrn.Directive "IdleTimeTaskSymbol"  _
+        , "1.OnIdleTask"
+ Jrn.Command "Internal" , " , ID_REVIT_MODEL_BROWSER_OPEN"
+ Jrn.RibbonEvent "ModelBrowserIsOpenChangedEvent:Open"
+ Jrn.Command "Ribbon" , "Открытие существующего проекта , ID_REVIT_FILE_OPEN"
+Jrn.Data "File Name"  _
+        , "IDOK", "C:\Users\ASUS\Documents\Revit+Dynamo\ТЗ 2е.rvt"
+Jrn.Data "WorksetConfig"  _
+        , "Custom", 0
+ Jrn.RibbonEvent "ModelBrowserIsOpenChangedEvent:Close"
+Jrn.Directive "DocSymbol"  _
+        , "[ТЗ 2е.rvt]"
+ Jrn.Activate "[ТЗ 2е.rvt]" , "Спецификация: Спецификация мебели"
+ Jrn.RibbonEvent "TabActivated:Управление"
+ Jrn.Command "Ribbon" , "Запуск Dynamo , ID_VISUAL_PROGRAMMING_DYNAMO"
+Jrn.Data "APIStringStringMapJournalData"  _
+        , 0
+ Jrn.AddInEvent "AddInJournaling" , "WpfWindow(_this,Dynamo).WpfListBox(0,filesListBox).SelectItems(2,Dynamo\.UI\.Controls\.StartPageListItem)"
+ Jrn.AddInEvent "AddInJournaling" , "FileDialog(Win7Open,Открыть определение Dynamo\.\.\.).SelectFile(C:\Users\ASUS\Documents\Revit+Dynamo\FirstTask4\.dyn,Определения Dynamo \(*\.dyn;*\.dyf\))"
