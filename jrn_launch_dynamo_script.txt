@@ -51,4 +51,4 @@ Jrn.Directive "DocSymbol"  _
 Jrn.Data "APIStringStringMapJournalData"  _
         , 0
  Jrn.AddInEvent "AddInJournaling" , "WpfWindow(_this,Dynamo).WpfListBox(0,filesListBox).SelectItems(2,Dynamo\.UI\.Controls\.StartPageListItem)"
- Jrn.AddInEvent "AddInJournaling" , "FileDialog(Win7Open,Открыть определение Dynamo\.\.\.).SelectFile(C:\Users\ASUS\Documents\Revit+Dynamo\FirstTask4\.dyn,Определения Dynamo \(*\.dyn;*\.dyf\))"
+ Jrn.AddInEvent "AddInJournaling" , "FileDialog(Win7Open,Открыть определение Dynamo\.\.\.).SelectFile(C:\Users\ASUS\Documents\Revit+Dynamo\csv_revit_csv\.dyn,Определения Dynamo \(*\.dyn;*\.dyf\))"

@@ -2,7 +2,7 @@
   "Uuid": "0343722e-afcb-467e-ba32-9a866e01869b",
   "IsCustomNode": false,
   "Description": null,
-  "Name": "FirstTask4",
+  "Name": "csv_revit_csv",
   "ElementResolver": {
     "ResolutionMap": {}
   },
@@ -62,7 +62,7 @@
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
       "NodeType": "StringInputNode",
-      "InputValue": "C:\\Users\\ASUS\\Documents\\Revit+Dynamo\\Спецификация мебели1.txt",
+      "InputValue": "C:\\Users\\ASUS\\Documents\\Revit+Dynamo\\Спецификация мебелиUTF-8.txt",
       "Id": "1ff194a6f32f41d1b50e30eaccfb522e",
       "Inputs": [],
       "Outputs": [
@@ -82,7 +82,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Загрузить стандартную библиотеку Python и библиотеку DesignScript\r\nimport sys\r\nimport clr\r\nimport csv\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# Введенные в этом узле данные сохраняется в виде списка в переменных IN.\r\npath = IN[0]\r\n\r\n# Разместите код под этой строкой\r\noutList = []\r\nwith open(path, 'rb') as f:\r\n\tdata = csv.reader((line.replace('\\0','') for line in f), delimiter=\"\\t\")\r\n\tfor row in data:\r\n\t\toutList.append(row)\r\n# Назначьте вывод переменной OUT.\r\nOUT = outList",
+      "Code": "# Загрузить стандартную библиотеку Python и библиотеку DesignScript\r\nimport sys\r\nimport clr\r\nimport csv\r\nimport codecs\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# Введенные в этом узле данные сохраняется в виде списка в переменных IN.\r\npath = IN[0]\r\n\r\n# Разместите код под этой строкой\r\noutList = []\r\nf = codecs.open(path, encoding=\"utf-8\") \r\ndata = csv.reader((line.replace('\\0','') for line in f), delimiter=\"\\t\")\r\nfor row in data:\r\n\toutList.append(row)\r\n# Назначьте вывод переменной OUT.\r\nOUT = outList",
       "VariableInputPorts": true,
       "Id": "f27c90d7f290410f96db0ae0e4038668",
       "Inputs": [
@@ -660,8 +660,8 @@
         "Name": "Element.ElementType",
         "ShowGeometry": true,
         "Excluded": false,
-        "X": 608.708609003199,
-        "Y": 189.33333333333331
+        "X": 609.700836655988,
+        "Y": 135.75304008271621
       },
       {
         "Id": "3e7ae90d9f0b45c39ea0b749a41a56ed",
@@ -765,8 +765,8 @@
       }
     ],
     "Annotations": [],
-    "X": 49.1596960475369,
-    "Y": 120.90003343496744,
-    "Zoom": 0.31121342167411103
+    "X": -171.23874301676202,
+    "Y": -8.6299679643288982,
+    "Zoom": 0.67188881986168281
   }
 }
